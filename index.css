@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Great+Vibes&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #f4f4f6;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #00496e;
+  padding: 20px 80px;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  color: #fff;
+}
+.logo h1 {
+  margin: 0;
+  font-size: 25px;
+}
+.features {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  gap: 20px;
+}
+
+.features a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+}
+
+img {
+  width: 8vh;
+  height: 8vh;
+  border-radius: 50%;
+}
+
+/* Main  */
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 80px;
+  width: 100%;
+}
+.sel-cal{
+  width: 400px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+ 
+  justify-content: center;
+ 
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+.sel-cal button {
+  width: 50%;
+  padding: 15px 0;
+  border: none;
+  outline: none;
+  background: #fff;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sel-cal button:hover{
+  cursor: pointer;
+  background: #00496e;
+  color: #fff;
+}
+
+/* Cal section */
+.cal-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+}
+/* Basic cal */
+#basic-cal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.cashflow-inputs{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.cashflow-inputs label {
+  margin-bottom: -15px;
+}
+.cashflow-inputs input {
+  
+  font-size: 16px;
+  padding: 9px 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-weight: 500;
+}
+/* 
+.cal-section input {
+  cursor: pointer;
+  outline: 0;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 0.8rem;
+  border-radius: 0.25rem;
+  color: #000000;
+  width: 230px;
+} */
+
+/* .slider {
+  display: flex;
+  gap: 10px;
+} */
+
+.slider {
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border: 2px solid #000000;
+  
+}
+
+
+
+.middle {
+  padding: 0 2rem;
+}
+
+
+
+#chart {
+  padding-top: 5rem;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-right: 85px;
+}
+
+.btn button {
+  cursor: pointer;
+  outline: 0;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  color: #000000;
+  border-color: #44484e;
+}
+
+#overview {
+  border-radius: 20px 0 0 20px;
+  background-color: #0d6efd;
+  color: #fff;
+}
+#overview:hover {
+  background-color: #fff;
+  color: #000000;
+}
+#details {
+  border-radius: 0 20px 20px 0;
+}
+#details:hover {
+  background-color: #0d6efd;
+  color: #ffffff;
+}
+.notes textarea {
+  border: none;
+}

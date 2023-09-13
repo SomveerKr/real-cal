@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <!-- Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Real Estate Cash Flow Calculator</title>
+</head>
+
+<body>
+    <nav>
+        <!-- Nav logo -->
+        <div class="logo">
+        <img src="./images/realEstate.jpg"
+            alt="logo">
+        <h1>Real Estate Cash Flow Calculator</h1>
+        </div>
+        <div class="features">
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Tax</a>
+        </div>
+    </nav>
+
+    <main class="main">
+        <!-- For Selecting basic and advanced Cal -->
+        <div class="sel-cal">
+            <button id="show-basic-cal">Basic</button>
+            <button id="show-advanced-cal">Advanced</button>
+        </div>
+
+        <!-- Section for displaying Cal -->
+        <section class="cal-section">
+
+            <!-- Basic Cal -->
+            <div id="basic-cal">
+                <!-- Inputs section for Cal -->
+                <div class="left">
+                        <h1>Enter Your Details</h1>
+                        <!-- Cashflow Cal inputs -->
+                        <div class="cashflow-inputs">
+                            <label for="monthly-income">Monthly Rental Income:</label>
+                            <input type="number" id="monthly-income" name="monthly-income" step="1" value='' placeholder="$10000">
+                            
+
+                            <label for="mortgage-payment">Mortgage Payment:</label>
+                            <input type="number" id="mortgage-payment" name="mortgage-payment" step="1" value=''
+                                placeholder="$20000">
+                            
+                            
+    
+                            <label for="property-taxes">Property taxes (monthly):</label>
+                            <input type="number" id="property-taxes" name="property-taxes" step="1" value=''
+                                placeholder="$600">
+                            
+                            
+    
+                            <label for="property-insurance">Property insurance (monthly):</label>
+                            <input type="number" id="property-insurance" name="property-insurance" step="1" value=''
+                                placeholder="$100">
+                            
+                            
+    
+                            <label for="property-management-fees">Property management fees <br>
+                                (monthly):</label>
+                            <input type="number" id="property-management-fees" name="property-management-fees" step="1" value=''
+                                placeholder="$300">
+                           
+                          
+    
+                            <label for="maintenance-costs">Maintenance costs (monthly):</label>
+                            <input type="number" id="maintenance-costs" name="maintenance-costs" step="1" value=''
+                                placeholder="$500">
+                            
+                            
+    
+                            <label for="other-expenses">Other expenses:</label>
+                            <input type="number" id="other-expenses" name="other-expenses" step="1" value='' placeholder="$2000">
+                           
+                           
+
+
+                        </div>
+                    
+                </div>
+    
+                <div class="middle">
+                    <!-- chart of cashflow output -->
+                    <canvas id="chart-cashflow"></canvas>
+                    <!-- Details of cashflow output -->
+                    <!-- <div id="details-cashflow"></div> -->
+
+    
+                    <div class="btn">
+                        <button id="overview">Overview</button>
+                        <button id="details">Details</button>
+                    </div>
+                </div>
+    
+    
+                <div class="right">
+                    <div class="notes">
+                        <h1>Notes:</h1>
+                        <p><label for="note">Add your Note:</label></p>
+                        <textarea id="note" name="note" rows="5" cols="20" placeholder="Enter your Note"></textarea>
+                    </div>
+                    <h1>Advance Features</h1>
+                    <p>Trend Analysis</p>
+                    <p>Geolocation</p>
+                    <p>Personalized Report</p>
+                    <p>Scenario Comparisons</p>
+                </div>
+
+            </div>
+
+           
+
+            
+        </section>
+    </main>
+    <script src="index.js"></script>
+    
+    
+    
+</body>
+
+</html>

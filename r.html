@@ -1,0 +1,109 @@
+ <!-- Advanced cal -->
+ <div id="advanced-cal">
+    <div class="left">
+        <div>
+            <div class="enter_income">
+                <h3>Enter Your Details</h3>
+                <p>Monthly Rental Income:</p>
+                <input type="number" id="monthly-income" step="0.01" value='0' placeholder="Enter income">
+                <div class="slidecontainer"><span id="monthly-income"></span>
+                    <input type="range" min="0" max="100" value="10" class="slider" id="myRange">
+                    <p>Value: <span id="demo"></span></p>
+
+                </div>
+
+            </div>
+            <div class="enter_expenses">
+                <h3>Expenses</h3>
+                <p>Mortgage Payment:</p>
+                <input type="number" id="mortgage-payment" step="0.01" value='0'
+                    placeholder="Enter mortgage payment">
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="100" value="10" class="slider" id="myRange">
+                    <p>Value: <span id="demo"></span></p>
+
+                </div>
+                <br />
+
+                <p>Property taxes (monthly):</p>
+                <input type="number" id="property-taxes" step="0.01" value='0'
+                    placeholder="Enter property taxes">
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="100" value="10" class="slider" id="myRange">
+                    <p>Value: <span id="demo"></span></p>
+                </div>
+                <br />
+
+                <p>Property insurance (monthly):</p>
+                <input type="number" id="property-insurance" step="0.01" value='0'
+                    placeholder="Enter property insurance">
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="100" value="10" class="slider" id="myRange">
+                    <p>Value: <span id="demo"></span></p>
+                </div>
+                <br />
+
+                <p>Property management fees <br>
+                    (monthly or percentage of rental
+                    income):</p>
+                <input type="number" id="property-management-fees" step="0.01" value='0'
+                    placeholder="Enter Property management fees">
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="100" value="10" class="slider" id="myRange">
+                    <p>Value: <span id="demo"></span></p>
+                </div>
+                <br />
+
+                <p>Maintenance costs (monthly):</p>
+                <input type="number" id="maintenance-costs" step="0.01" value='0'
+                    placeholder="Enter maintenance costs">
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="100" value="10" class="slider" id="myRange">
+                    <p>Value: <span id="demo"></span></p>
+                </div>
+                <br />
+
+                <p>Other expenses:</p>
+                <input type="number" id="other-expenses" step="0.01" value='0'
+                    placeholder="Enter other expenses">
+                <div class="slidecontainer">
+                    <input type="range" min="0" max="100" value="10" class="slider" id="myRange">
+                    <p>Value: <span id="demo"></span></p>
+                </div>
+                <br />
+
+            </div>
+        </div>
+    </div>
+
+    <div class="middle">
+       
+
+        <div id="chart"></div>
+
+        <div class="btn">
+            <!-- <button id="randomize">Randomize</button>
+            <button id="add">Add</button>
+            <button id="remove">Remove</button>
+            <button id="reset">Reset</button> -->
+
+            <button id="overview">Overview</button>
+            <button id="details">Details</button>
+        </div>
+    </div>
+
+
+    <div class="right">
+        <div class="notes">
+            <h1>Notes:</h1>
+            <p><label for="note">Add your Note:</label></p>
+            <textarea id="note" name="note" rows="5" cols="20" placeholder="Enter your Note"></textarea>
+        </div>
+        <h1>Advance Features</h1>
+        <p>Trend Analysis</p>
+        <p>Geolocation</p>
+        <p>Personalized Report</p>
+        <p>Scenario Comparisons</p>
+    </div>
+
+</div>
