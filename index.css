@@ -10,6 +10,7 @@ body {
   background-color: #f4f4f6;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 nav {
@@ -18,6 +19,7 @@ nav {
   background-color: #00496e;
   padding: 20px 80px;
   gap: 20px;
+  width: 100%;
 }
 
 .logo {
@@ -68,25 +70,31 @@ main{
   justify-content: center;
  
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0, 73, 110, 0.200);
 }
 .sel-cal button {
   width: 50%;
   padding: 15px 0;
-  border: none;
   outline: none;
-  background: #fff;
   border-radius: 10px;
   font-size: 16px;
   font-weight: 600;
-}
-
-.sel-cal button:hover{
   cursor: pointer;
+}
+.sel-cal-clicked{
+  border: 1px solid #00496e;
   background: #00496e;
   color: #fff;
 }
 
+.sel-cal-unclicked{
+  border: 1px solid #fff;
+  background: #fff;
+  color:#00496e ;
+}
+.sel-cal-unclicked:hover{
+  border: 1px solid #00496e;
+}
 /* Cal section */
 .cal-section {
   display: flex;
@@ -101,6 +109,19 @@ main{
   justify-content: space-between;
 }
 
+.input-symbol-dollar {
+  position: relative;
+  display: inline-block;
+}
+
+.input-symbol-dollar::before {
+  content: "$";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
 
 .cashflow-inputs{
   display: flex;
@@ -113,93 +134,87 @@ main{
 .cashflow-inputs input {
   
   font-size: 16px;
-  padding: 9px 10px;
+  padding: 9px 10px 9px 21px;
   border-radius: 6px;
   border: 1px solid #ddd;
   font-weight: 500;
 }
-/* 
-.cal-section input {
-  cursor: pointer;
-  outline: 0;
-  display: inline-block;
-  font-weight: 400;
-  line-height: 1.5;
-  background-color: transparent;
-  border: 1px solid transparent;
-  font-size: 0.8rem;
-  border-radius: 0.25rem;
-  color: #000000;
-  width: 230px;
-} */
+.cashflow-inputs input::before {
+  content: "$";
+  left: 0;
+  padding-right: 0;
+  border-right: 0;
+ 
 
-/* .slider {
-  display: flex;
-  gap: 10px;
-} */
-
-.slider {
-  width: 100%;
-  height: 15px;
-  border-radius: 5px;  
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-  border: 2px solid #000000;
-  
 }
+
 
 
 
 .middle {
-  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.5rem 0 2rem;
+  gap: 30px;
 }
 
-
-
-#chart {
-  padding-top: 5rem;
+/* #details-cashflow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+.details-cashflow-title{
+  font-size: 18px;
+  color: rgb(102,102,102);
+  font-weight: 700;
+  text-align: center;
 }
-
-.btn {
+.rent-details{
+  display: flex;
+  align-items: center;
+  gap:30px;
+  justify-content: space-between;
+}
+.rent-details h4 {
+  font-weight: 500;
+}
+.sel-over-chart {
+  width: 250px;
   display: flex;
   justify-content: center;
-  padding-top: 20px;
-  padding-right: 85px;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 73, 110, 0.200);
+  border-radius: 20px;
+  background: #fff;
 }
 
-.btn button {
+.sel-over-chart button {
+  width: 50%;
   cursor: pointer;
   outline: 0;
-  display: inline-block;
-  font-weight: 400;
-  line-height: 1.5;
+  font-weight: 500;
   text-align: center;
-  background-color: transparent;
   border: 1px solid transparent;
-  padding: 8px 16px;
-  font-size: 0.8rem;
-  color: #000000;
-  border-color: #44484e;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  border-radius: 20px;
+   
 }
 
-#overview {
-  border-radius: 20px 0 0 20px;
-  background-color: #0d6efd;
+
+.over-chart-clicked {
+  background: #00496e;
   color: #fff;
+  border: 1px solid #00496e;
 }
-#overview:hover {
-  background-color: #fff;
+.over-chart-unclicked {
+  background: #fff;
   color: #000000;
+  border: 1px solid #fff;
 }
-#details {
-  border-radius: 0 20px 20px 0;
-}
-#details:hover {
-  background-color: #0d6efd;
-  color: #ffffff;
+.over-chart-unclicked:hover {
+  border: 1px solid #00496e;
 }
 .notes textarea {
   border: none;

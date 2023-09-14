@@ -1,3 +1,9 @@
+
+
+
+
+
+
 // Get the input elements by their id
 let monthlyIncome = document.getElementById("monthly-income");
 let mortgagePayment = document.getElementById("mortgage-payment");
@@ -26,7 +32,7 @@ let ctx = document.getElementById("chart-cashflow").getContext("2d");
 
   // Create a data object with the values for the chart
 let data = {
-  labels: ["Cash Flow", "Gross Income", "Total Expenses"],
+  labels: ["Monthly Cash Flow", "Monthly Income", "Monthly Expenses"],
   datasets: [
     {
       label: "Cash Flow Analysis",
@@ -45,18 +51,27 @@ let doughnutChart = new Chart(ctx, {
     responsive: true, // Make the chart responsive
     plugins: {
       legend: {
-        position: "top" // Display the legend at the top
+        position: "top", // Display the legend at the top
+        labels: {
+          // This more specific font property overrides the global property
+          font: {
+              size: 14
+          }
+      }
       },
       title: {
-        display: true, // Display the title
-        text: "Real Estate Cash Flow Analysis" // Set the title text
+        display: true, // Display the title //COLOR rgb(102,102,102)
+        text: "Real Estate Cash Flow Analysis", // Set the title text
+        font:{
+          size:"18"
+        }
       }
     }
   }
 });
 
 
-
+doughnutChart.resize(370, 370);
 
 inputs.forEach( (input) => {
   // Loop through each input element & Add an input event listener to each element
@@ -85,211 +100,83 @@ inputs.forEach( (input) => {
 
   // Calculate the cash flow by subtracting the total expenses from the gross income
   cashFlow = grossIncome - totalExpenses;
-  // the cash flow value
-  console.log(cashFlow); 
-  if(!isNaN(cashFlow)){
+
+  // console.log(cashFlow); 
+  
     data.datasets[0].data = [cashFlow, grossIncome, totalExpenses ];
     doughnutChart.update();
-  } else {
-    data.datasets[0].data = [ 9000, 30000, 21000];
-    doughnutChart.update();
-  }
-  });
-  
-  
  
+
+  
+    displayOutputValuesInDetails(grossIncome, totalExpenses, cashFlow);
+  
+  });  
+ 
+});
+
+
+ // FOR DISPLAYING THE OUTPUT IN DETAILS
+const displayOutputValuesInDetails = (grossIncome, totalExpenses, cashFlow) => {
+ 
+  const monthlyIncomeDiv =document.getElementById("monthlyIncomeDiv");
+  const monthlyExpensesDiv =document.getElementById("monthlyExpensesDiv");
+  const monthlyCashflowDiv =document.getElementById("monthlyCashflowDiv");
+  const yearlyCashflowDiv =document.getElementById("yearlyCashflowDiv");
+  if (cashFlow === undefined){
+    monthlyIncomeDiv.innerHTML = "$" + 30000;
+    monthlyExpensesDiv.innerHTML = "$" + 21000;
+    monthlyCashflowDiv.innerHTML = "$" + 9000;
+    yearlyCashflowDiv.innerHTML = "$" + 9000 * 12;
+  } else {
+    monthlyIncomeDiv.innerHTML = "$" + grossIncome ;
+    monthlyExpensesDiv.innerHTML = "$" + totalExpenses ;
+    monthlyCashflowDiv.innerHTML = "$" + cashFlow ;
+    yearlyCashflowDiv.innerHTML = "$" + (cashFlow * 12);
+  }
+  
+}
+displayOutputValuesInDetails()
+
+
+
+// Get the elements by their ids
+var chart = document.getElementById("chart-cashflow");
+var details = document.getElementById("details-cashflow");
+var overviewBtn = document.getElementById("show-overview-btn");
+var detailsBtn = document.getElementById("show-details-btn");
+
+// Hide the details div by default
+details.style.display = "none";
+
+// Add an event listener to the overview button
+overviewBtn.addEventListener("click", function() {
+  // Show the chart and hide the details
+  chart.style.width="370px";
+  chart.style.height="370px";
+  chart.style.display = "block";
+  
+  details.style.display = "none";
+  // Add the over-chart-clicked class to the overview button and remove it from the details button
+  overviewBtn.classList.add("over-chart-clicked");
+  detailsBtn.classList.remove("over-chart-clicked");
+  // Remove the over-chart-unclicked class from the overview button and add it to the details button
+  overviewBtn.classList.remove("over-chart-unclicked");
+  detailsBtn.classList.add("over-chart-unclicked");
+});
+
+// Add an event listener to the details button
+detailsBtn.addEventListener("click", function() {
+  // Hide the chart and show the details
+  chart.style.display = "none";
+  details.style.display = "block";
+  // Add the over-chart-clicked class to the details button and remove it from the overview button
+  detailsBtn.classList.add("over-chart-clicked");
+  overviewBtn.classList.remove("over-chart-clicked");
+  // Remove the over-chart-unclicked class from the details button and add it to the overview button
+  detailsBtn.classList.remove("over-chart-unclicked");
+  overviewBtn.classList.add("over-chart-unclicked");
 });
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Define letiables to store user inputs
-// // let monthlyIncome = 0;
-// // let mortgagePayment = 0;
-// // let propertyTaxes = 0;
-// // let propertyInsurance = 0;
-// // let propertyManagementFees = 0;
-// // let maintenanceCosts = 0;
-// // let otherExpenses = 0;
-
-
-// // Function to update calculations based on user input
-// function updateCalculations() {
-//   // Get user inputs
-//   monthlyIncome = parseFloat(document.getElementById("monthly-income").value);
-//   mortgagePayment = parseFloat(
-//     document.getElementById("mortgage-payment").value
-//   );
-//   propertyTaxes = parseFloat(document.getElementById("property-taxes").value);
-//   propertyInsurance = parseFloat(
-//     document.getElementById("property-insurance").value
-//   );
-//   propertyManagementFees = parseFloat(
-//     document.getElementById("property-management-fees").value
-//   );
-//   maintenanceCosts = parseFloat(
-//     document.getElementById("maintenance-costs").value
-//   );
-//   otherExpenses = parseFloat(document.getElementById("other-expenses").value);
-// }
-
-// // Function to calculate monthly cash flow
-// function calculateMonthlyCashFlow() {
-//     updateCalculations()
-//   // Calculate monthly cash flow
-//   const totalExpenses =
-//     mortgagePayment +
-//     propertyTaxes +
-//     propertyInsurance +
-//     propertyManagementFees +
-//     maintenanceCosts +
-//     otherExpenses;
-
-//   const monthlyCashFlow = monthlyIncome - totalExpenses;
-//   const annualCashFloew = monthlyCashFlow * 12;
-//   const annualExpenses = totalExpenses * 12;
-
-//   // Update the UI to display monthly cash flow
-//   document.getElementById("monthly-cash-flow").value = String(monthlyCashFlow);
-//   document.getElementById("total-monthly-expenses").value = String(totalExpenses);
-//   document.getElementById("annual-cash-flow").value = String(annualCashFloew);
-//   document.getElementById("annual-expenses").value = String(annualExpenses);
-// }
-
-// // Reset Button function
-// function reset() {
-//   document.getElementById("monthly-income").value = "0";
-//   document.getElementById("mortgage-payment").value = "0";
-//   document.getElementById("property-taxes").value = "0";
-//   document.getElementById("property-insurance").value = "0";
-//   document.getElementById("property-management-fees").value = "0";
-//   document.getElementById("maintenance-costs").value = "0";
-//   document.getElementById("other-expenses").value = "0";
-// }
-
-// //Slider
-
-// let slider = document.getElementById("myRange");
-// let output = document.getElementById("demo");
-// output.innerHTML = slider.value;
-
-// slider.oninput = function() {
-//   output.innerHTML = this.value;
-// }
-
-// // ================================= Donut Chart ===================
-
-// let options = {
-//   series: [44, 55, 13, 33],
-//   chart: {
-//   width: 380,
-//   type: 'donut',
-// },
-// dataLabels: {
-//   enabled: false
-// },
-// responsive: [{
-//   breakpoint: 480,
-//   options: {
-//     chart: {
-//       width: 200
-//     },
-//     legend: {
-//       show: false
-//     }
-//   }
-// }],
-// legend: {
-//   position: 'right',
-//   offsetY: 0,
-//   height: 230,
-// }
-// };
-
-// let chart = new ApexCharts(document.querySelector("#chart"), options);
-// chart.render();
-
-
-// function appendData() {
-// let arr = chart.w.globals.series.slice()
-// arr.push(Math.floor(Math.random() * (100 - 1 + 1)) + 1)
-// return arr;
-// }
-
-// function removeData() {
-// let arr = chart.w.globals.series.slice()
-// arr.pop()
-// return arr;
-// }
-
-// function randomize() {
-// return chart.w.globals.series.map(function() {
-//     return Math.floor(Math.random() * (100 - 1 + 1)) + 1
-// })
-// }
-
-// function reset() {
-// return options.series
-// }
-
-// document.querySelector("#randomize").addEventListener("click", function() {
-// chart.updateSeries(randomize())
-// })
-
-// document.querySelector("#add").addEventListener("click", function() {
-// chart.updateSeries(appendData())
-// })
-
-// document.querySelector("#remove").addEventListener("click", function() {
-// chart.updateSeries(removeData())
-// })
-
-// document.querySelector("#reset").addEventListener("click", function() {
-// chart.updateSeries(reset())
-// })
-
-// // ========================================================================
