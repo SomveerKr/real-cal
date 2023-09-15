@@ -3,7 +3,6 @@
 
 
 
-
 // Get the input elements by their id
 let monthlyIncome = document.getElementById("monthly-income");
 let mortgagePayment = document.getElementById("mortgage-payment");
