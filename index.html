@@ -21,6 +21,8 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css'>
+    <!-- Autonumeric.js for formatting input values with commas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autonumeric/4.10.0/autoNumeric.min.js" integrity="sha512-IBnOW5h97x4+Qk4l3EcqmRTFKTgXTd4HGiY3C/GJKT5iJeJci9dgsFw4UAoVfi296E01zoDNb3AZsFrvcJJvPA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -29,12 +31,39 @@
         <div class="logo">
         <img src="./images/realEstate.jpg"
             alt="logo">
-        <h1>Real Estate Cash Flow Calculator</h1>
+        <h1>Real Estate Cash Flow</h1>
         </div>
         <div class="features">
-            <a href="">Home</a>
             <a href="">About</a>
-            <a href="">Tax</a>
+            <div id="open-notesSection-modal">Notes</div>
+            <!-- Notes -->
+            <dialog id="modal-notes-section">
+                <div class="notes-section">
+                    <div class="notes-header">
+                        <h1>Notes:</h1> 
+                        <div id="close-notes-modal">
+                            <img src="./images/remove-icon.png" alt="remove-icon">
+                        </div>
+                    </div>
+
+                    <div class="notes">
+                        <input id="m-noteTitle" type="text" placeholder="Note Title">
+                        <textarea id="m-noteContent" rows="5" cols="20" placeholder="Write your Note"></textarea>
+                        <button onclick="saveNote()">Save</button>
+                    </div>
+                    <div>
+                        <p id="m-notesCount">0 Notes Found</p>
+
+                        <!-- Note Display -->
+                        <div id="m-display-noteBox" class="note">
+                            <!-- For Dynamically displaying note -->
+                        </div>
+                    </div>
+                </div>
+
+            </dialog>
+
+            
         </div>
     </nav>
 
@@ -52,63 +81,63 @@
             <div id="change-cal" class="basic-cal">
                 <!-- Inputs section for Cal -->
                 <div class="left">
-                        <h1>Enter Your Details <br> (monthly)</h1>
+                        <h1>Enter Your Details(monthly)</h1>
                         <!-- Cashflow Cal inputs -->
                         <div class="cashflow-inputs">
                             <label for="monthly-income">Rental Income:</label>
                             <span class="input-symbol-dollar">
-                                <input type="number" id="monthly-income" name="monthly-income" step="1" value='10000' >
+                                <input type="text" id="monthly-income" name="monthly-income" step="1" value='10000' >
                             </span>
                             <!-- Slider -->
-                            <input type="range" id="monthly-income-slider" class="input-slider" min="0" max="20000"
+                            <input type="range" id="monthly-income-slider" class="input-slider" min="0" max="200000"
                             step="1">
 
                             <label for="mortgage-payment">Mortgage Payment:</label>
                             <span class="input-symbol-dollar">
-                                <input type="number" id="mortgage-payment" name="mortgage-payment" step="1" value='20000'>
+                                <input type="text" id="mortgage-payment" name="mortgage-payment" step="1" value='20000'>
                             </span>
                             <!-- Slider -->
-                            <input type="range" id="mortgage-payment-slider" class="input-slider" min="0" max="40000"
+                            <input type="range" id="mortgage-payment-slider" class="input-slider" min="0" max="400000"
                             step="1">
 
                             <label for="property-taxes">Property taxes:</label>
                             <span class="input-symbol-dollar">
-                                <input type="number" id="property-taxes" name="property-taxes" step="1" value='600'>
+                                <input type="text" id="property-taxes" name="property-taxes" step="1" value='600'>
                             </span>
                             <!-- Slider -->
-                            <input type="range" id="property-taxes-slider" class="input-slider" min="0" max="1200"
+                            <input type="range" id="property-taxes-slider" class="input-slider" min="0" max="12000"
                             step="1">
                             
                             <label for="property-insurance">Property insurance:</label>
                             <span class="input-symbol-dollar">
-                                <input type="number" id="property-insurance" name="property-insurance" step="1" value='100'>
+                                <input type="text" id="property-insurance" name="property-insurance" step="1" value='100'>
                             </span>
                             <!-- Slider -->
-                            <input type="range" id="property-insurance-slider" class="input-slider" min="0" max="200"
+                            <input type="range" id="property-insurance-slider" class="input-slider" min="0" max="20000"
                             step="1">
                             
                             <label for="property-management-fees">Property management fees:</label>
                             <span class="input-symbol-dollar">
-                                <input type="number" id="property-management-fees" name="property-management-fees" step="1" value='300'>
+                                <input type="text" id="property-management-fees" name="property-management-fees" step="1" value='300'>
                             </span>
                             <!-- Slider -->
                             <input type="range" id="property-management-fees-slider" class="input-slider" min="0"
-                            max="600" step="1">
+                            max="6000" step="1">
                             
                             <label for="maintenance-costs">Maintenance costs:</label>
                             <span class="input-symbol-dollar">
-                                <input type="number" id="maintenance-costs" name="maintenance-costs" step="1" value='500'>
+                                <input type="text" id="maintenance-costs" name="maintenance-costs" step="1" value='500'>
                             </span>
                             <!-- Slider -->
-                            <input type="range" id="maintenance-costs-slider" class="input-slider" min="0" max="1000"
+                            <input type="range" id="maintenance-costs-slider" class="input-slider" min="0" max="10000"
                             step="1">
                             
                             <label for="other-expenses">Other expenses:</label>
                             <span class="input-symbol-dollar">
-                                <input type="number" id="other-expenses" name="other-expenses" step="1" value='2000' >
+                                <input type="text" id="other-expenses" name="other-expenses" step="1" value='2000' >
                             </span>
                             <!-- Slider -->
-                            <input type="range" id="other-expenses-slider" class="input-slider" min="0" max="4000"
+                            <input type="range" id="other-expenses-slider" class="input-slider" min="0" max="40000"
                             step="1">
                             
                            
@@ -127,19 +156,19 @@
                         <p class="details-cashflow-title">Real Estate Cash Flow Details</p>
                         <div class="rent-details">
                             <h4 class="rent-details-txt">Monthly Rental Income:- </h4>
-                            <div id="monthlyIncomeDiv" class="rent-details-value">$2000</div>
+                            <div id="monthlyIncomeDiv" class="rent-details-value">$ <span></span></div>
                         </div>
                         <div class="rent-details">
                             <h4 class="rent-details-txt">Gross Monthly Expenses:- </h4>
-                            <div id="monthlyExpensesDiv" class="rent-details-value">$2000</div>
+                            <div id="monthlyExpensesDiv" class="rent-details-value">$ <span></span></div>
                         </div>
                         <div class="rent-details">
                             <h4 class="rent-details-txt">Monthly Cash Flow:-</h4>
-                            <div id="monthlyCashflowDiv" class="rent-details-value">$2000</div>
+                            <div id="monthlyCashflowDiv" class="rent-details-value">$ <span></span></div>
                         </div>
                         <div class="rent-details">
                             <h4 class="rent-details-txt">Yearly Cash Flow:-</h4>
-                            <div id="yearlyCashflowDiv" class="rent-details-value">$2000</div>
+                            <div id="yearlyCashflowDiv" class="rent-details-value">$ <span></span></div>
                         </div>
                         
                     </div>
@@ -149,10 +178,17 @@
                         <button id="show-overview-btn" class="over-chart-clicked">Overview</button>
                         <button id="show-details-btn" class="over-chart-unclicked">Details</button>
                     </div>
+
+                    <!-- Get Reports -->
+                    <div class="get-report">
+                        <input type="email" name="" id="email-input" placeholder="Enter your mail address" required>
+                        <button id="get-report-button">Get Report</button>
+                    </div>
+                    <div id="for-dowloading-files"></div>
                 </div>
 
                 <!-- Right Part i.e the Notes Section -->
-                <div class="right">
+                <div id="notes-section" class="right">
                     <h1>Notes:</h1>
                     <div class="notes">
                         <input id="noteTitle" type="text" placeholder="Note Title">
@@ -181,11 +217,20 @@
             
         </section>
     </main>
+
+    <footer>
+        &copy;2023 <em>REAL ESTATE CASH FLOW CALCULATOR</em>
+    </footer>
+
+
     <!-- JS -->
     <script src="js/notes.js"></script>
     <script src="js/selectCal.js"></script>
     <script src="js/inputSection.js"></script>
     <script src="js/chartAndDetails.js"></script>
+    <script type="module" src="js/report.js"></script>
+    <script src="js/modalNotes.js"></script>
+    <script src="js/getUserLocation.js"></script>
   
     
     

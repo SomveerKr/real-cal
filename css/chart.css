@@ -64,3 +64,43 @@
   .over-chart-unclicked:hover {
     border: 1px solid #00496e;
   }
+
+  /* Reports */
+  
+.get-report {
+  margin-top: 30px;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  border-radius: 25px;
+  background-color: #fff;
+  align-items: center;
+  gap: 5px;
+}
+
+.get-report input {
+  border: none;
+  padding: 10px 0 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  border: 2px solid #fff;
+  background-color: #fff;
+}
+
+.get-report input:hover{
+  border: 2px solid #00496E;
+}
+
+.get-report button {
+  border: none;
+  padding: 10px 20px;
+  border-radius:  25px;
+  background-color: #00496E;
+  color: #fff;
+  cursor: pointer;
+  border: 2px solid #00496E;
+}
+
+.get-report button:hover{
+  border: 2px solid #fff;
+}

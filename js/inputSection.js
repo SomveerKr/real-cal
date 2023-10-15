@@ -1,9 +1,17 @@
 
-// Slider for input-------------------------------------------------
+let allCashflowInputs = document.querySelectorAll (".cashflow-inputs input[type='text']");
+const formatAllCashFlowInputsWithComma= () => {
+  for (let i = 0; i < allCashflowInputs.length; i++) {
+    // Initialize the AutoNumeric library with options 
+    new AutoNumeric (allCashflowInputs[i], { digitGroupSeparator: ",", formatOnPageLoad: true, maximumValue: "999999999", minimumValue: "0", }); 
+  } 
+}
+formatAllCashFlowInputsWithComma()
 function updateInputFromSlider(inputId, sliderId) {
     const input = document.getElementById(inputId);
     const slider = document.getElementById(sliderId);
     input.value = slider.value;
+    formatAllCashFlowInputsWithComma()
   }
   
   function updateSliderFromInput(inputId, sliderId) {
@@ -68,4 +76,4 @@ function updateInputFromSlider(inputId, sliderId) {
     updateSliderFromInput("other-expenses", "other-expenses-slider");
   });
   
-  // -------------------------- ADDED----------------------------------
+

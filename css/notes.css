@@ -1,3 +1,46 @@
+/* Smaller screen navbar notes */
+
+.notes-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 5px 25px 0;
+}
+.notes-header h1{
+  color: #000000;
+  margin: 0;
+}
+#close-notes-modal img{
+  width: 22px;
+  height: 22px;
+}
+#close-notes-modal{
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+#close-notes-modal:hover{
+  cursor: pointer;
+  background: #eaeaea;
+}
+dialog#modal-notes-section{
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  padding: 20px 20px 30px 20px;
+  width: 40%;
+}
+dialog#modal-notes-section .notes-section{
+  width: 100%;
+  color: #222 !important;
+}
+#m-notesCount, #m-display-noteBox{
+  color: #222;
+}
+
 
 /* ------------------------------------- NOTES SECtion --------------------- */
 .right{
@@ -107,3 +150,26 @@
     background-color: #00496e;
     color: #fff;
   }
+
+
+  @media screen and (max-width:1160px){
+
+  .right{
+    display: none;
+  }
+
+  }
+  /* @media screen and (max-width:950px){
+
+    .right{
+      width: 270px;
+    }
+    }
+
+    @media screen and (max-width:810px){
+
+      .right{
+        width: 400px;
+      }
+
+    } */

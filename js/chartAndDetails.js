@@ -75,19 +75,19 @@ doughnutChart.resize(370, 370);
 inputs.forEach( (input) => {
   // Loop through each input element & Add an input event listener to each element
   input.addEventListener("input", () => {
-    monthlyIncomeValue = parseInt(monthlyIncome.value);
+    monthlyIncomeValue = parseInt((monthlyIncome.value).replace(/,/g, ""));
     // console.log(monthlyIncomeValue);
-    mortgagePaymentValue = parseInt(mortgagePayment.value);
+    mortgagePaymentValue = parseInt((mortgagePayment.value).replace(/,/g, ""));
     // console.log(mortgagePaymentValue);
-    propertyTaxesValue = parseInt(propertyTaxes.value);
+    propertyTaxesValue = parseInt((propertyTaxes.value).replace(/,/g, ""));
     // console.log(propertyTaxesValue);
-    propertyInsuranceValue = parseInt(propertyInsurance.value);
+    propertyInsuranceValue = parseInt((propertyInsurance.value).replace(/,/g, ""));
     // console.log(propertyInsuranceValue);
-    propertyManagementFeesValue = parseInt(propertyManagementFees.value);
+    propertyManagementFeesValue = parseInt((propertyManagementFees.value).replace(/,/g, ""));
     // console.log(propertyManagementFeesValue);
-    maintenanceCostsValue = parseInt(maintenanceCosts.value);
+    maintenanceCostsValue = parseInt((maintenanceCosts.value).replace(/,/g, ""));
     // console.log(maintenanceCostsValue);
-    otherExpensesValue = parseInt(otherExpenses.value);
+    otherExpensesValue = parseInt((otherExpenses.value).replace(/,/g, ""));
     // console.log(otherExpensesValue);
 
 
@@ -108,7 +108,7 @@ inputs.forEach( (input) => {
 
   
     displayOutputValuesInDetails(grossIncome, totalExpenses, cashFlow);
-  
+    formatAllRentDetailDivsWithComma();
   });  
  
 });
@@ -117,26 +117,40 @@ inputs.forEach( (input) => {
  // FOR DISPLAYING THE OUTPUT IN DETAILS
 const displayOutputValuesInDetails = (grossIncome, totalExpenses, cashFlow) => {
  
-  const monthlyIncomeDiv =document.getElementById("monthlyIncomeDiv");
-  const monthlyExpensesDiv =document.getElementById("monthlyExpensesDiv");
-  const monthlyCashflowDiv =document.getElementById("monthlyCashflowDiv");
-  const yearlyCashflowDiv =document.getElementById("yearlyCashflowDiv");
+  const monthlyIncomeDiv =document.querySelector("#monthlyIncomeDiv span");
+  const monthlyExpensesDiv =document.querySelector("#monthlyExpensesDiv span");
+  const monthlyCashflowDiv =document.querySelector("#monthlyCashflowDiv span");
+  const yearlyCashflowDiv =document.querySelector("#yearlyCashflowDiv span");
   if (cashFlow === undefined){
-    monthlyIncomeDiv.innerHTML = "$" + 30000;
-    monthlyExpensesDiv.innerHTML = "$" + 21000;
-    monthlyCashflowDiv.innerHTML = "$" + 9000;
-    yearlyCashflowDiv.innerHTML = "$" + 9000 * 12;
+    monthlyIncomeDiv.innerHTML = 30000;
+    monthlyExpensesDiv.innerHTML = 21000;
+    monthlyCashflowDiv.innerHTML = 9000;
+    yearlyCashflowDiv.innerHTML = 9000 * 12;
   } else {
-    monthlyIncomeDiv.innerHTML = "$" + grossIncome ;
-    monthlyExpensesDiv.innerHTML = "$" + totalExpenses ;
-    monthlyCashflowDiv.innerHTML = "$" + cashFlow ;
-    yearlyCashflowDiv.innerHTML = "$" + (cashFlow * 12);
+    monthlyIncomeDiv.innerHTML = grossIncome ;
+    monthlyExpensesDiv.innerHTML = totalExpenses ;
+    monthlyCashflowDiv.innerHTML = cashFlow ;
+    yearlyCashflowDiv.innerHTML = (cashFlow * 12);
   }
   
 }
 displayOutputValuesInDetails()
+let allRentDetailDivs = document.querySelectorAll (".rent-details-value span");
+const formatAllRentDetailDivsWithComma= () => {
+  for (let i = 0; i < allRentDetailDivs.length; i++) {
+    // Initialize the AutoNumeric library with options 
+    new AutoNumeric (allRentDetailDivs[i], { 
+      digitGroupSeparator: ",", 
+      formatOnPageLoad: true, 
+      maximumValue: "999999999", 
+      minimumValue: "-999999999",
+      alwaysAllowDecimalCharacter:false,
+      
+    }); 
+  } 
+};
 
-
+formatAllRentDetailDivsWithComma();
 
 // Get the elements by their ids
 var chart = document.getElementById("chart-cashflow");
@@ -150,8 +164,7 @@ details.style.display = "none";
 // Add an event listener to the overview button
 overviewBtn.addEventListener("click", function() {
   // Show the chart and hide the details
-  chart.style.width="370px";
-  chart.style.height="370px";
+
   chart.style.display = "block";
   
   details.style.display = "none";

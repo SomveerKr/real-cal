@@ -4,9 +4,7 @@ const inputSliders = document.querySelectorAll(".input-slider");
 console.log(inputSliders)
 const showBasicCal = document.getElementById("show-basic-cal");
 const showAdvancedCal = document.getElementById("show-advanced-cal");
-// const basicCal = document.getElementById("basic-cal");
 const changeCal = document.getElementById("change-cal");
-// const advancedCal = document.getElementById("advanced-cal");
 
 showBasicCal.addEventListener("click", ()=>{
   showBasicCal.classList.add("sel-cal-clicked");

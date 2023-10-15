@@ -36,21 +36,6 @@ function saveNote() {
 }
 
 
- // Function to update a note
-//  function updateNote() {
-//      if (currentIndex >= 0) {
-//          const noteTitle = document.getElementById('noteTitle').value;
-//          const noteContent = document.getElementById('noteContent').value;
-
-//          if (noteTitle && noteContent) {
-//              notes[currentIndex].title = noteTitle;
-//              notes[currentIndex].content = noteContent;
-//              localStorage.setItem('notes', JSON.stringify(notes));
-//              displayNote();
-//          }
-//      }
-//  }
-
  // Function to delete a note
  function deleteNote() {
      if (currentIndex >= 0) {
@@ -86,6 +71,7 @@ function saveNote() {
 
 
     if(notes.length > 0 &&  currentIndex >= 0   ){ 
+      console.log(currentIndex)
         const currentNote = notes[currentIndex];
         
         noteDisplayBox.innerHTML=`
@@ -120,3 +106,27 @@ function saveNote() {
  updateNotesCount();
  displayNote();
 
+
+
+
+
+
+
+
+
+
+
+  // Function to update a note
+//  function updateNote() {
+//      if (currentIndex >= 0) {
+//          const noteTitle = document.getElementById('noteTitle').value;
+//          const noteContent = document.getElementById('noteContent').value;
+
+//          if (noteTitle && noteContent) {
+//              notes[currentIndex].title = noteTitle;
+//              notes[currentIndex].content = noteContent;
+//              localStorage.setItem('notes', JSON.stringify(notes));
+//              displayNote();
+//          }
+//      }
+//  }
